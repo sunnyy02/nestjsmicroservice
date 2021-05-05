@@ -1,19 +1,14 @@
-import { Controller, Logger, Post, Body } from '@nestjs/common';
-import { MathService } from './email/email/email.service';
+import { Controller, Logger, Post, Body, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  // Create a logger instance
   private logger = new Logger('AppController');
 
-  // Inject the math service
-  constructor(private mathService: MathService) {}
+  constructor() {}
 
-  // Map the 'POST /add' route to this method
-  @Post('add')
-  // Define the logic to be executed
-  async accumulate(@Body('data') data: number[])  {
-    this.logger.log('Adding ' + data.toString()); // Log something on every call
-    return this.mathService.accumulate(data); // use math service to calc result & return
+  @Get('hello')
+  async hello() {
+    this.logger.log('hello');
+    return 'hello';
   }
 }
