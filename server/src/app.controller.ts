@@ -17,4 +17,11 @@ export class AppController {
     this.logger.log('Adding ' + data.toString()); // Log something on every call
     return this.mathService.accumulate(data); // use math service to calc result & return
   }
+
+  @MessagePattern('sendEmail')
+  // Define the logic to be executed
+  async sendEmail()  {
+    this.logger.log('sent'); // Log something on every call
+    return true;
+  }
 }
